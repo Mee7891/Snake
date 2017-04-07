@@ -10,6 +10,18 @@ namespace Snake1
     {
         static void Main(string[] args)
         {
+            Point p1 = new Point(3, 4, '*');
+            p1.Drawn += DrawPoint;
+
+            p1.Draw();
+
+            Console.ReadKey();
+        }
+
+        static void DrawPoint(object sender, PointEventArgs e)
+        {
+            Console.SetCursorPosition(e.X, e.Y);
+            Console.WriteLine(e.Sym);
         }
     }
 }
