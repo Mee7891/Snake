@@ -14,7 +14,8 @@ namespace Snake1
 
             for(int i = xMin; i<=xMax; i++)
             {
-                pList[i] = new Point(i, y, sym);
+                Point p = new Point(i, y, sym);
+                pList.Add(p);
             }
         }
     }
