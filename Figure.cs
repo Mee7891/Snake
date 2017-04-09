@@ -8,7 +8,7 @@ namespace Snake1
 {
     abstract class Figure
     {
-        List<Point> pList;
+        protected List<Point> pList;
 
         public void Draw()
         {
