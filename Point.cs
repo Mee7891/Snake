@@ -23,14 +23,14 @@ namespace Snake1
             if (e != null && handler != null)
                 handler.Invoke(this, e);
         }
-        protected internal void onDrawn(PointEventArgs e)
+        protected internal void OnDrawn(PointEventArgs e)
         {
             CallEvent(e, Drawn);
         }
 
         public void Draw()
         {
-            onDrawn(new PointEventArgs(X, Y, Sym));
+            OnDrawn(new PointEventArgs(X, Y, Sym));
         }
         
     }
