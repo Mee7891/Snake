@@ -20,10 +20,8 @@ namespace Snake1
             VerticalLine leftLine     = new   VerticalLine(0,  0, 24, '+');
             VerticalLine rightLine    = new   VerticalLine(78, 0, 24, '+');
             SetHandlersForFigures(DrawPoint, topLine, bottomLine, leftLine, rightLine);
-            topLine.Draw(); 
-            bottomLine.Draw(); 
-            leftLine.Draw(); rightLine.Draw();
-
+            topLine.Draw(); bottomLine.Draw(); leftLine.Draw(); rightLine.Draw();
+            /////////////////////////////////////////////////////////////////////////////
 
             Console.SetCursorPosition(40, 10);
             Console.ReadKey();
