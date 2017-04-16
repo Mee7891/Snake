@@ -10,14 +10,22 @@ namespace Snake1
     {
         static void Main(string[] args)
         {
-            HorisontalLine l1 = new HorisontalLine(3, 8, 2, '*');
-            VerticalLine l2 = new VerticalLine(4, 12, 15, '&');
+            Console.SetWindowSize(80, 26);
+            Console.SetBufferSize(80, 26);
 
-            SetHandlersForFigures(DrawPoint, l1, l2);
 
-            l1.Draw();
-            l2.Draw();
+            //Отрисовка рамки
+            HorisontalLine topLine    = new HorisontalLine(0, 78,  0, '+');
+            HorisontalLine bottomLine = new HorisontalLine(0, 78, 24, '+');
+            VerticalLine leftLine     = new   VerticalLine(0,  0, 24, '+');
+            VerticalLine rightLine    = new   VerticalLine(78, 0, 24, '+');
+            SetHandlersForFigures(DrawPoint, topLine, bottomLine, leftLine, rightLine);
+            topLine.Draw(); 
+            bottomLine.Draw(); 
+            leftLine.Draw(); rightLine.Draw();
 
+
+            Console.SetCursorPosition(40, 10);
             Console.ReadKey();
         }
 
