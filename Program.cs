@@ -10,18 +10,14 @@ namespace Snake1
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(80, 26);
-            Console.SetBufferSize(80, 26);
-
-
-            //Отрисовка рамки
-            HorisontalLine topLine    = new HorisontalLine(0, 78,  0, '+');
-            HorisontalLine bottomLine = new HorisontalLine(0, 78, 24, '+');
-            VerticalLine leftLine     = new   VerticalLine(0,  0, 24, '+');
-            VerticalLine rightLine    = new   VerticalLine(78, 0, 24, '+');
-            SetHandlersForFigures(DrawPoint, topLine, bottomLine, leftLine, rightLine);
-            topLine.Draw(); bottomLine.Draw(); leftLine.Draw(); rightLine.Draw();
-            /////////////////////////////////////////////////////////////////////////////
+            //подготовка "площадки"
+            const int xm = 0;
+            const int ym = 0;
+            const int xM = 80;
+            const int yM = 26;
+            Console.SetWindowSize(xM, yM);
+            Console.SetBufferSize(xM, yM);
+            DrawFramework(xm, ym, xM - 2, yM - 2, '+');
 
             Console.SetCursorPosition(40, 10);
             Console.ReadKey();
@@ -37,6 +33,16 @@ namespace Snake1
         {
             foreach (Figure f in figArr)
                 f.setEventHandler(handler);
+        }
+
+        static void DrawFramework(int xm, int ym, int xM, int yM, char sym)
+        {
+            HorisontalLine topLine    = new HorisontalLine(xm, xM, ym, sym);
+            HorisontalLine bottomLine = new HorisontalLine(xm, xM, yM, sym);
+            VerticalLine   leftLine   = new   VerticalLine(xm, ym, yM, sym);
+            VerticalLine   rightLine  = new   VerticalLine(xM, ym, yM, sym);
+            SetHandlersForFigures(DrawPoint, topLine, bottomLine, leftLine, rightLine);
+            topLine.Draw(); bottomLine.Draw(); leftLine.Draw(); rightLine.Draw();
         }
     }
 }
