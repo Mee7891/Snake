@@ -17,6 +17,8 @@ namespace Snake1
             X = x; Y = y; Sym = sym;
         }
 
+        public Point(Point p) : this(p.X, p.Y, p.Sym) { }
+
         protected internal event EventHandler<PointEventArgs> Drawn;
         protected internal void CallEvent(PointEventArgs e, EventHandler<PointEventArgs> handler)
         {
