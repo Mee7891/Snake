@@ -19,6 +19,10 @@ namespace Snake1
             Console.SetBufferSize(xM, yM);
             DrawFramework(xm, ym, xM - 2, yM - 2, '+');
 
+            Snake snake = new Snake(2, 10, 4, Direction.Right);
+            snake.setEventHandler(DrawPoint);
+            snake.Draw();
+
             Console.SetCursorPosition(40, 10);
             Console.ReadKey();
         }
