@@ -32,6 +32,26 @@ namespace Snake1
         {
             OnDrawn(new PointEventArgs(X, Y, Sym));
         }
+
+        public void Erase()
+        {
+            char temp = Sym;
+            Sym = ' ';
+            Draw();
+            Sym = temp;
+        }
+
+        public void Move(int x, int y)
+        {
+            Erase();
+            X = x; Y = y;
+            Draw();
+        }
+
+        public void Move(Point p)
+        {
+            Move(p.X, p.Y);
+        }
         
     }
 }
