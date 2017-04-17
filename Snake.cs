@@ -23,8 +23,9 @@ namespace Snake1
 
             for (int i = 0; i < length; i++)
             {
-                p.Move(dir, i);
-                pList.Add(p);
+                Point p1 = new Point(p);
+                p1.Move(dir, i);
+                pList.Add(p1);
             }
         }
     }
