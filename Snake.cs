@@ -31,12 +31,12 @@ namespace Snake1
 
         public void Move()
         {
-            pList.First().Erase();
+           pList.First().Erase();
 
-            for(int i = pList.Count - 1;  --i>=0;)
-            {
-                pList.ElementAt(i).Move(pList.ElementAt(i + 1));
-            }
+           for (int i = 0; i < pList.Count-1; i++)
+           {
+                pList[i].Move(pList[i+1]);
+           }
 
             pList.Last().Move(dir);
         }

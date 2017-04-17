@@ -35,7 +35,7 @@ namespace Snake1
             snake.Move();
             Thread.Sleep(300);
             snake.Move();
-            Thread.Sleep(300);
+
 
             Console.SetCursorPosition(40, 10);
             Console.ReadKey();

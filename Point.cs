@@ -38,7 +38,7 @@ namespace Snake1
         public void Erase()
         {
             char temp = Sym;
-            Sym = '#';
+            Sym = ' ';
             Draw();
             Sym = temp;
         }
