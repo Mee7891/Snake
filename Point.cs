@@ -52,6 +52,37 @@ namespace Snake1
         {
             Move(p.X, p.Y);
         }
-        
+
+        public void Move(Direction dir, int step)
+        {
+            switch (dir)
+            {
+                case Direction.Down:
+                    {
+                        Move(X, Y + step);
+                        break;
+                    }
+                case Direction.Up:
+                    {
+                        Move(X, Y - step);
+                        break;
+                    }
+                case Direction.Left:
+                    {
+                        Move(X - step, Y);
+                        break;
+                    }
+                case Direction.Right:
+                    {
+                        Move(X + step, Y);
+                        break;
+                    }
+            }
+        }
+
+        public void Move(Direction dir)
+        {
+            Move(dir, 1);
+        }
     }
 }
