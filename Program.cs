@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake1
@@ -22,6 +23,19 @@ namespace Snake1
             Snake snake = new Snake(2, 10, 4, Direction.Right);
             snake.setEventHandler(DrawPoint);
             snake.Draw();
+
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
 
             Console.SetCursorPosition(40, 10);
             Console.ReadKey();

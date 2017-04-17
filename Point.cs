@@ -38,14 +38,13 @@ namespace Snake1
         public void Erase()
         {
             char temp = Sym;
-            Sym = ' ';
+            Sym = '#';
             Draw();
             Sym = temp;
         }
 
         public void Move(int x, int y)
         {
-            Erase();
             X = x; Y = y;
             Draw();
         }

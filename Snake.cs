@@ -28,5 +28,17 @@ namespace Snake1
                 pList.Add(p1);
             }
         }
+
+        public void Move()
+        {
+            pList.First().Erase();
+
+            for(int i = pList.Count - 1;  --i>=0;)
+            {
+                pList.ElementAt(i).Move(pList.ElementAt(i + 1));
+            }
+
+            pList.Last().Move(dir);
+        }
     }
 }
