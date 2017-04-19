@@ -40,5 +40,36 @@ namespace Snake1
 
             pList.Last().Move(dir);
         }
+
+        public void KeyHandleConsole(ConsoleKey key)
+        {
+            switch(key)
+            {
+                case ConsoleKey.DownArrow:
+                {
+                     if (dir != Direction.Up)
+                            dir = Direction.Down;
+                     break;
+                }
+                case ConsoleKey.UpArrow:
+                {
+                     if (dir != Direction.Down)
+                            dir = Direction.Up;
+                     break;
+                }
+                case ConsoleKey.RightArrow:
+                {
+                     if (dir != Direction.Left)
+                            dir = Direction.Right;
+                     break;
+                }
+                case ConsoleKey.LeftArrow:
+                {
+                     if (dir != Direction.Right)
+                            dir = Direction.Left;
+                     break;
+                }
+            }
+        }
     }
 }

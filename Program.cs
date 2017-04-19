@@ -24,20 +24,24 @@ namespace Snake1
             snake.setEventHandler(DrawPoint);
             snake.Draw();
 
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-
-
             Console.SetCursorPosition(40, 10);
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    if (keyInfo.Key == ConsoleKey.Escape)
+                        break;
+
+                    snake.KeyHandleConsole(keyInfo.Key);
+                }
+
+                Thread.Sleep(300);
+                snake.Move();
+            }
+
+
             Console.ReadKey();
         }
 
