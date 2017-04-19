@@ -24,13 +24,14 @@ namespace Snake1
             snake.setEventHandler(DrawPoint);
             snake.Draw();
 
+            Console.CursorVisible = false;
             Console.SetCursorPosition(40, 10);
 
             while (true)
             {
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                     if (keyInfo.Key == ConsoleKey.Escape)
                         break;
 
