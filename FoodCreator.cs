@@ -29,12 +29,15 @@ namespace Snake1
             food.Draw();
         }
 
+        void CreateFood(object sender, SnakeEventArgs e)
+        {
+            CreateFood();
+        }
+
         public void setEventHandler(EventHandler<PointEventArgs> handler)
         {
             food.Drawn += handler;
         }
-
-
 
     }
 }
