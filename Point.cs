@@ -85,5 +85,31 @@ namespace Snake1
         {
             Move(dir, 1);
         }
+
+        public override bool Equals(object obj)
+        {
+            if(obj is Point)
+            {
+                Point p = (Point) obj;
+                if (this.X == p.X && this.Y == p.Y)
+                    return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+
+        public static bool operator ==(Point p1, Point p2)
+        {
+            return p1.Equals(p2);
+        }
+
+        public static bool operator !=(Point p1, Point p2)
+        {
+            return !p1.Equals(p2);
+        }
     }
 }

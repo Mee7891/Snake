@@ -75,13 +75,22 @@ namespace Snake1
             }
         }
 
-        public Point GetNextPoint()
+        private Point GetNextPoint()
         {
             Point nextPoint = new Point(pList.Last());
 
             nextPoint.Move(dir);
 
             return nextPoint;
+        }
+
+        public void Eat(Point food)
+        {
+            if(food == GetNextPoint())
+            {
+                food.Sym = pList.First().Sym;
+                pList.Add(food); 
+            }
         }
     }
 }
