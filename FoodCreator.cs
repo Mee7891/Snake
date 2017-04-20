@@ -21,13 +21,19 @@ namespace Snake1
             this.sym = sym;
         }
 
-        Point CreateFood()
+        void CreateFood()
         {
             int x = random.Next(2, mapWidth - 2);
             int y = random.Next(2, mapHeight - 2);
             food = new Point(x, y, sym);
-            return food;
+            food.Draw();
         }
+
+        public void setEventHandler(EventHandler<PointEventArgs> handler)
+        {
+            food.Drawn += handler;
+        }
+
 
 
     }
