@@ -26,7 +26,7 @@ namespace Snake1
 
             FoodCreator foodCreator = new FoodCreator(xM, yM, '$');
             foodCreator.setEventHandler(DrawPoint);
-            foodCreator.food.Draw();
+            foodCreator.CreateFood();
            
             snake.Eaten += foodCreator.CreateFood;
 
