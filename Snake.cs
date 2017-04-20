@@ -33,12 +33,15 @@ namespace Snake1
         {
            pList.First().Erase();
 
+           //Собственно движение змейки
            for (int i = 0; i < pList.Count-1; i++)
            {
                 pList[i].Move(pList[i+1]);
            }
 
             pList.Last().Move(dir);
+
+            //Проверка не вылезли ли за границы рамки
         }
 
         public void KeyHandleConsole(ConsoleKey key)
