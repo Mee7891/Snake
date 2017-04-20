@@ -89,8 +89,20 @@ namespace Snake1
             if(food == GetNextPoint())
             {
                 food.Sym = pList.First().Sym;
-                pList.Add(food); 
+                pList.Add(food);
+                OnEaten(new SnakeEventArgs());
             }
+        }
+
+        protected internal event EventHandler<SnakeEventArgs> Eaten;
+        protected internal void CallEvent(SnakeEventArgs e, EventHandler<SnakeEventArgs> handler)
+        {
+            if (e != null && handler != null)
+                handler.Invoke(this, e);
+        }
+        protected internal void OnEaten(SnakeEventArgs e)
+        {
+            CallEvent(e, Eaten);
         }
     }
 }
