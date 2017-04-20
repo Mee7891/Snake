@@ -71,5 +71,14 @@ namespace Snake1
                 }
             }
         }
+
+        public Point GetNextPoint()
+        {
+            Point nextPoint = new Point(pList.Last());
+
+            nextPoint.Move(dir);
+
+            return nextPoint;
+        }
     }
 }
