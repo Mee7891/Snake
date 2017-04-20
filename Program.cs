@@ -24,6 +24,12 @@ namespace Snake1
             snake.setEventHandler(DrawPoint);
             snake.Draw();
 
+            FoodCreator foodCreator = new FoodCreator(xM, yM, '$');
+            foodCreator.setEventHandler(DrawPoint);
+            foodCreator.food.Draw();
+           
+            snake.Eaten += foodCreator.CreateFood;
+
             Console.CursorVisible = false;
             Console.SetCursorPosition(40, 10);
 
@@ -40,6 +46,7 @@ namespace Snake1
 
                 Thread.Sleep(300);
                 snake.Move();
+                snake.Eat(foodCreator.food);
             }
 
 

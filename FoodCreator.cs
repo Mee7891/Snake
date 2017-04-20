@@ -19,9 +19,11 @@ namespace Snake1
         {
             this.mapHeight = mapHeight; this.mapWidth = mapWidth;
             this.sym = sym;
+
+            CreateFood();
         }
 
-        void CreateFood()
+        public void CreateFood()
         {
             int x = random.Next(2, mapWidth - 2);
             int y = random.Next(2, mapHeight - 2);
@@ -29,14 +31,15 @@ namespace Snake1
             food.Draw();
         }
 
-        void CreateFood(object sender, SnakeEventArgs e)
+        public void CreateFood(object sender, SnakeEventArgs e)
         {
             CreateFood();
         }
 
         public void setEventHandler(EventHandler<PointEventArgs> handler)
         {
-            food.Drawn += handler;
+            if(food != null)
+                food.Drawn += handler;
         }
 
     }
