@@ -25,5 +25,18 @@ namespace Snake1
                 p.Drawn += handler;
             }
         }
+
+        public Point this[int n]
+        {
+            get
+            {
+                try
+                { return pList[n]; }
+                catch
+                {
+                    throw new Exception("Неверный индекс в обращении к точкам фигуры");
+                }
+            }
+        }
     }
 }
