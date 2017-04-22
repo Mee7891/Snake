@@ -74,7 +74,6 @@ namespace Snake1
             gameOver = true;
             Console.SetCursorPosition(xM/2, yM/2);
             Console.WriteLine(e.Message);
-
         }
 
     }

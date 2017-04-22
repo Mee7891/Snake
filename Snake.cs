@@ -41,7 +41,8 @@ namespace Snake1
 
             pList.Last().Move(dir);
 
-            //Проверка не вылезли ли за границы рамки
+            //Проверка не врезались ли в хвост
+            TailHitProve();
         }
 
         public void KeyHandleConsole(ConsoleKey key)
@@ -98,6 +99,13 @@ namespace Snake1
         {
             if (walls.isHit(pList.Last()))
                 OnHit(new SnakeEventArgs("Игра окончена!"));
+        }
+
+        private void TailHitProve()
+        {
+            for (int i = pList.Count - 1; --i >= 0;)
+                if (pList[i] == pList.Last())
+                    OnHit(new SnakeEventArgs("Игра окончена!"));
         }
 
         //События и то, что с ними связано
