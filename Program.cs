@@ -9,11 +9,13 @@ namespace Snake1
 {
     class Program
     {
+        const int xM = 80;
+        const int yM = 26;
+        static bool gameOver = false;
+
         static void Main(string[] args)
         {
             //подготовка "площадки"
-            const int xM = 80;
-            const int yM = 26;
             Console.SetWindowSize(xM, yM);
             Console.SetBufferSize(xM, yM);
 
@@ -34,12 +36,13 @@ namespace Snake1
             foodCreator.CreateFood();
            
             snake.Eaten += foodCreator.CreateFood; //сигнал от змейки, что она поела, надо создавать еще еду
+            snake.Hit += SnakeHit; //сигнал от змейки, что она ударилась
 
             //для красоты
             Console.CursorVisible = false;
             Console.SetCursorPosition(40, 10);
 
-            while (true)
+            while (!gameOver)
             {
                 if (Console.KeyAvailable)
                 {
@@ -53,6 +56,7 @@ namespace Snake1
                 Thread.Sleep(300);
                 snake.Move();
                 snake.Eat(foodCreator.food);
+                snake.HitProve(walls);
             }
 
 
@@ -63,6 +67,14 @@ namespace Snake1
         {
             Console.SetCursorPosition(e.X, e.Y);
             Console.WriteLine(e.Sym);
+        }
+
+        static void SnakeHit(object sender, SnakeEventArgs e)
+        {
+            gameOver = true;
+            Console.SetCursorPosition(xM/2, yM/2);
+            Console.WriteLine(e.Message);
+
         }
 
     }

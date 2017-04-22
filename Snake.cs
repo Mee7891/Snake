@@ -94,6 +94,12 @@ namespace Snake1
             }
         }
 
+        public void HitProve(Walls walls)
+        {
+            if (walls.isHit(pList.Last()))
+                OnHit(new SnakeEventArgs("Игра окончена!"));
+        }
+
         //События и то, что с ними связано
         protected internal event EventHandler<SnakeEventArgs> Eaten;
         protected internal event EventHandler<SnakeEventArgs> Hit;
