@@ -94,7 +94,9 @@ namespace Snake1
             }
         }
 
+        //События и то, что с ними связано
         protected internal event EventHandler<SnakeEventArgs> Eaten;
+        protected internal event EventHandler<SnakeEventArgs> Hit;
         protected internal void CallEvent(SnakeEventArgs e, EventHandler<SnakeEventArgs> handler)
         {
             if (e != null && handler != null)
@@ -103,6 +105,10 @@ namespace Snake1
         protected internal void OnEaten(SnakeEventArgs e)
         {
             CallEvent(e, Eaten);
+        }
+        protected internal void OnHit(SnakeEventArgs e)
+        {
+            CallEvent(e, Hit);
         }
 
     }
