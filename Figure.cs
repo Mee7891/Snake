@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Snake1
 {
-    abstract class Figure
+    abstract class Figure: IEnumerable
     {
         protected List<Point> pList;
 
@@ -37,6 +38,11 @@ namespace Snake1
                     throw new Exception("Неверный индекс в обращении к точкам фигуры");
                 }
             }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return pList.GetEnumerator();
         }
     }
 }
