@@ -12,24 +12,30 @@ namespace Snake1
         static void Main(string[] args)
         {
             //подготовка "площадки"
-            const int xm = 0;
-            const int ym = 0;
             const int xM = 80;
             const int yM = 26;
             Console.SetWindowSize(xM, yM);
             Console.SetBufferSize(xM, yM);
-            DrawFramework(xm, ym, xM - 2, yM - 2, '+');
 
+            Walls walls = new Walls(xM, yM);
+            walls.setDrawEventHandler(DrawPoint);
+            walls.Draw();
+            ///////////////////////////////////
+
+            //Создадим змейку
             Snake snake = new Snake(2, 10, 4, Direction.Right);
             snake.setEventHandler(DrawPoint);
             snake.Draw();
+            ///////////////////////////////////////
 
+            //Создадим "создатель еды"
             FoodCreator foodCreator = new FoodCreator(xM, yM, '$');
             foodCreator.setEventHandler(DrawPoint);
             foodCreator.CreateFood();
            
-            snake.Eaten += foodCreator.CreateFood;
+            snake.Eaten += foodCreator.CreateFood; //сигнал от змейки, что она поела, надо создавать еще еду
 
+            //для красоты
             Console.CursorVisible = false;
             Console.SetCursorPosition(40, 10);
 
@@ -37,7 +43,7 @@ namespace Snake1
             {
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                    ConsoleKeyInfo keyInfo = Console.ReadKey(true); //без true рамка будет съедаться змейкой
                     if (keyInfo.Key == ConsoleKey.Escape)
                         break;
 
@@ -59,20 +65,5 @@ namespace Snake1
             Console.WriteLine(e.Sym);
         }
 
-        static void SetHandlersForFigures(EventHandler<PointEventArgs> handler, params Figure [] figArr)
-        {
-            foreach (Figure f in figArr)
-                f.setEventHandler(handler);
-        }
-
-        static void DrawFramework(int xm, int ym, int xM, int yM, char sym)
-        {
-            HorisontalLine topLine    = new HorisontalLine(xm, xM, ym, sym);
-            HorisontalLine bottomLine = new HorisontalLine(xm, xM, yM, sym);
-            VerticalLine   leftLine   = new   VerticalLine(xm, ym, yM, sym);
-            VerticalLine   rightLine  = new   VerticalLine(xM, ym, yM, sym);
-            SetHandlersForFigures(DrawPoint, topLine, bottomLine, leftLine, rightLine);
-            topLine.Draw(); bottomLine.Draw(); leftLine.Draw(); rightLine.Draw();
-        }
     }
 }
